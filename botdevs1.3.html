@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot Selection</title>
+  <style>
+    /* Hintergrund-Div: stark geblurrter Hintergrund */
+    .bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('logo.png') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(20px);
+      z-index: -1;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background: transparent;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #333;
+    }
+    
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .selection-btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #7289da;
+      color: #fff;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    
+    .selection-btn:hover {
+      background-color: #5b6eae;
+      transform: scale(1.05);
+    }
+    
+    .payment-form {
+      display: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hintergrund -->
+  <div class="bg"></div>
+  
+  <h1>Choose your Bot</h1>
+  <div class="btn-container">
+    <button class="selection-btn" id="btn-basic">Basic Bot (€5)</button>
+    <button class="selection-btn" id="btn-standard">Standard Bot (€15)</button>
+    <button class="selection-btn" id="btn-advanced">Advanced Bot (€30)</button>
+    <button class="selection-btn" id="btn-high">High complexity Bot (€50)</button>
+  </div>
+
+  <div id="form-container">
+    <!-- Basic Bot Payment Form -->
+    <div class="payment-form" id="form-basic">
+      <style>
+        .pp-SUC6N553C6PNE {
+          text-align: center;
+          border: none;
+          border-radius: 0.25rem;
+          min-width: 11.625rem;
+          padding: 0 2rem;
+          height: 2.625rem;
+          font-weight: bold;
+          background-color: #FFD140;
+          color: #000000;
+          font-family: "Helvetica Neue", Arial, sans-serif;
+          font-size: 1rem;
+          line-height: 1.25rem;
+          cursor: pointer;
+        }
+      </style>
+      <form action="https://www.paypal.com/ncp/payment/SUC6N553C6PNE" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+        <input class="pp-SUC6N553C6PNE" type="submit" value="Buy Bot (Category 1)" />
+        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+        <section> Processed by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+      </form>
+    </div>
+
+    <!-- Standard Bot Payment Form -->
+    <div class="payment-form" id="form-standard">
+      <style>
+        .pp-WSNAUQX7U5FVC {
+          text-align: center;
+          border: none;
+          border-radius: 0.25rem;
+          min-width: 11.625rem;
+          padding: 0 2rem;
+          height: 2.625rem;
+          font-weight: bold;
+          background-color: #FFD140;
+          color: #000000;
+          font-family: "Helvetica Neue", Arial, sans-serif;
+          font-size: 1rem;
+          line-height: 1.25rem;
+          cursor: pointer;
+        }
+      </style>
+      <form action="https://www.paypal.com/ncp/payment/WSNAUQX7U5FVC" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+        <input class="pp-WSNAUQX7U5FVC" type="submit" value="Standard Bot (€15)" />
+        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+        <section> Processed by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+      </form>
+    </div>
+
+    <!-- Advanced Bot Payment Form -->
+    <div class="payment-form" id="form-advanced">
+      <style>
+        .pp-ZXTZJVWQB5R2Q {
+          text-align: center;
+          border: none;
+          border-radius: 0.25rem;
+          min-width: 11.625rem;
+          padding: 0 2rem;
+          height: 2.625rem;
+          font-weight: bold;
+          background-color: #FFD140;
+          color: #000000;
+          font-family: "Helvetica Neue", Arial, sans-serif;
+          font-size: 1rem;
+          line-height: 1.25rem;
+          cursor: pointer;
+        }
+      </style>
+      <form action="https://www.paypal.com/ncp/payment/ZXTZJVWQB5R2Q" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+        <input class="pp-ZXTZJVWQB5R2Q" type="submit" value="Advanced Bot (€30)" />
+        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+        <section> Processed by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+      </form>
+    </div>
+
+    <!-- High Complexity Bot Payment Form -->
+    <div class="payment-form" id="form-high">
+      <style>
+        .pp-E84BGQ8CMAZ2W {
+          text-align: center;
+          border: none;
+          border-radius: 0.25rem;
+          min-width: 11.625rem;
+          padding: 0 2rem;
+          height: 2.625rem;
+          font-weight: bold;
+          background-color: #FFD140;
+          color: #000000;
+          font-family: "Helvetica Neue", Arial, sans-serif;
+          font-size: 1rem;
+          line-height: 1.25rem;
+          cursor: pointer;
+        }
+      </style>
+      <form action="https://www.paypal.com/ncp/payment/E84BGQ8CMAZ2W" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+        <input class="pp-E84BGQ8CMAZ2W" type="submit" value="High complexity Bot" />
+        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+        <section> Processed by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // References to selection buttons
+    const btnBasic = document.getElementById('btn-basic');
+    const btnStandard = document.getElementById('btn-standard');
+    const btnAdvanced = document.getElementById('btn-advanced');
+    const btnHigh = document.getElementById('btn-high');
+    
+    // References to payment forms
+    const formBasic = document.getElementById('form-basic');
+    const formStandard = document.getElementById('form-standard');
+    const formAdvanced = document.getElementById('form-advanced');
+    const formHigh = document.getElementById('form-high');
+    
+    // Hide all forms function
+    function hideAllForms() {
+      formBasic.style.display = 'none';
+      formStandard.style.display = 'none';
+      formAdvanced.style.display = 'none';
+      formHigh.style.display = 'none';
+    }
+    
+    // Click events to show the corresponding payment form
+    btnBasic.addEventListener('click', () => {
+      hideAllForms();
+      formBasic.style.display = 'block';
+    });
+    
+    btnStandard.addEventListener('click', () => {
+      hideAllForms();
+      formStandard.style.display = 'block';
+    });
+    
+    btnAdvanced.addEventListener('click', () => {
+      hideAllForms();
+      formAdvanced.style.display = 'block';
+    });
+    
+    btnHigh.addEventListener('click', () => {
+      hideAllForms();
+      formHigh.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
