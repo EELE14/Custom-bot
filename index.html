@@ -62,11 +62,91 @@
       display: none;
       text-align: center;
     }
+    
+    /* Top-Navigation */
+    .top-nav {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1rem;
+      padding: 10px;
+      z-index: 10;
+    }
+    
+    .nav-btn {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #7289da;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    
+    .nav-btn:hover {
+      background-color: #5b6eae;
+      transform: scale(1.05);
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+      animation: fadeIn 0.3s;
+    }
+    
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      position: relative;
+      animation: slideIn 0.3s;
+      text-align: center;
+    }
+    
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    
+    @keyframes slideIn {
+      from {transform: translateY(-20px);}
+      to {transform: translateY(0);}
+    }
   </style>
 </head>
 <body>
   <!-- Hintergrund -->
   <div class="bg"></div>
+  
+  <!-- Top Navigation Bar -->
+  <div class="top-nav">
+    <button class="nav-btn" id="btn-tos">Terms of Service</button>
+    <button class="nav-btn" id="btn-pricing">Pricing & Information</button>
+    <button class="nav-btn" id="btn-additional">Additional Services</button>
+  </div>
   
   <h1>Choose your Bot</h1>
   <div class="btn-container">
@@ -182,20 +262,103 @@
     </div>
   </div>
 
+  <!-- Terms of Service Modal -->
+  <div id="modal-tos" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modal-tos">&times;</span>
+      <h2>You are leaving this page!</h2>
+      <p>Do you want to confirm?</p>
+      <button id="confirm-tos" class="nav-btn">Confirm</button>
+    </div>
+  </div>
+
+  <!-- Pricing & Information Modal -->
+  <div id="modal-pricing" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modal-pricing">&times;</span>
+      <div class="modal-body" style="text-align: center;">
+        <h2>Free Minimal Bot (€0 / 0 Robux)</h2>
+        <hr>
+        <p>
+          Very basic commands (e.g., simple text responses)<br>
+          No API integrations, databases, or advanced logic<br>
+          Limited customization and support<br>
+          Possible uptime limitations
+        </p>
+        <h2>Basic Bot (€5 / 500 Robux [650 Robux with fee])</h2>
+        <hr>
+        <p>
+          Simple commands and basic functionalities<br>
+          No API integrations or database requirements<br>
+          Quick and lightweight
+        </p>
+        <h2>Standard Bot (€15 / 1500 Robux [1950 Robux with fee])</h2>
+        <hr>
+        <p>
+          More advanced commands and interactions<br>
+          Basic API integrations (e.g., fetching external data)<br>
+          Basic data handling with lightweight storage<br>
+          Optimized and customizable
+        </p>
+        <h2>Advanced Bot (€30 / 3000 Robux [3900 Robux with fee])</h2>
+        <hr>
+        <p>
+          Multiple API integrations<br>
+          Complex data handling (e.g., databases, analytics)<br>
+          Optimized and scalable<br>
+          More customization available
+        </p>
+        <h2>High complexity Bot (€50 / 5000 Robux [6500 Robux with fee])</h2>
+        <hr>
+        <p>
+          Highly complex automation<br>
+          Large-scale API and database integrations<br>
+          Use of AI/machine learning elements (optional)<br>
+          Full customization based on your needs<br>
+          Most optimized and professional-grade solution
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Services Modal -->
+  <div id="modal-additional" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modal-additional">&times;</span>
+      <div class="modal-body" style="text-align: center;">
+        <h2>Additional Services</h2>
+        <h3>Updates & Maintenance</h3>
+        <hr>
+        <p>
+          Bug fixes and minor changes within the first month are free.<br>
+          After that, updates are charged based on complexity (€5 - €20 / 500 - 2000 Robux [650 - 2600 with fee]).
+        </p>
+        <h3>Priority Support</h3>
+        <hr>
+        <p>
+          Get priority support for an additional €3 (300 Robux [390 with fee]).
+        </p>
+        <h3>Custom Requests</h3>
+        <hr>
+        <p>
+          For unique ideas outside the listed categories, contact us for a custom quote!
+        </p>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // References to selection buttons
+    // --- Bot Selection und Payment Forms ---
     const btnBasic = document.getElementById('btn-basic');
     const btnStandard = document.getElementById('btn-standard');
     const btnAdvanced = document.getElementById('btn-advanced');
     const btnHigh = document.getElementById('btn-high');
     
-    // References to payment forms
     const formBasic = document.getElementById('form-basic');
     const formStandard = document.getElementById('form-standard');
     const formAdvanced = document.getElementById('form-advanced');
     const formHigh = document.getElementById('form-high');
     
-    // Hide all forms function
     function hideAllForms() {
       formBasic.style.display = 'none';
       formStandard.style.display = 'none';
@@ -203,7 +366,6 @@
       formHigh.style.display = 'none';
     }
     
-    // Click events to show the corresponding payment form
     btnBasic.addEventListener('click', () => {
       hideAllForms();
       formBasic.style.display = 'block';
@@ -222,6 +384,46 @@
     btnHigh.addEventListener('click', () => {
       hideAllForms();
       formHigh.style.display = 'block';
+    });
+    
+    // --- Navigation Buttons und Modals ---
+    const btnTos = document.getElementById('btn-tos');
+    const btnPricing = document.getElementById('btn-pricing');
+    const btnAdditional = document.getElementById('btn-additional');
+    
+    const modalTos = document.getElementById('modal-tos');
+    const modalPricing = document.getElementById('modal-pricing');
+    const modalAdditional = document.getElementById('modal-additional');
+    
+    const confirmTos = document.getElementById('confirm-tos');
+    
+    btnTos.addEventListener('click', () => {
+      modalTos.style.display = 'block';
+    });
+    
+    btnPricing.addEventListener('click', () => {
+      modalPricing.style.display = 'block';
+    });
+    
+    btnAdditional.addEventListener('click', () => {
+      modalAdditional.style.display = 'block';
+    });
+    
+    // Schließe Modals über das "X"
+    document.querySelectorAll('.close').forEach(el => {
+      el.addEventListener('click', (e) => {
+        const modalId = e.target.getAttribute('data-modal');
+        if (modalId) {
+          document.getElementById(modalId).style.display = 'none';
+        } else {
+          e.target.closest('.modal').style.display = 'none';
+        }
+      });
+    });
+    
+    // Bestätigungsaktion für Terms of Service
+    confirmTos.addEventListener('click', () => {
+      window.open('https://docs.google.com/document/d/1vKjVpvQrNl9BndiRLhyCzqiqS1aUxOBurk-ruN-o6NY/edit?usp=sharing', '_blank');
     });
   </script>
 </body>
